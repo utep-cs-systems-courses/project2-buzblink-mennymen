@@ -1,6 +1,0 @@
-#ifndef buzzer_included
-#define buzzer_included
-
-void play(char *note);
-
-#endif

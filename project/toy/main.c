@@ -182,7 +182,7 @@ int main() {
 	  goto start;
 	  break;
 	  
-	}  
+	}    
 	buzzer_count = 0; 
       }
       
