@@ -177,12 +177,307 @@ int main() {
 
 	case 23:
 	  play(0);
-	  state = 0;
+	  state = 24;
 	  buzzer_count = 95;
 	  goto start;
 	  break;
+
+	case 24:
+	  play(0);
+	  state = 245;
+	  break;
+
+	case 245:
+	  state = 25;
+	  buzzer_count = 50;
+	  goto start;
+	  break;
 	  
-	}    
+	case 25:
+	  play(0xD5);
+	  state = 26;
+	  break;
+
+	case 26:
+	  play(0xF5);
+	  state = 27;
+	  buzzer_count = 50;
+	  goto start;
+	  break;
+
+	case 27:
+	  play(0xA5);
+	  state = 28;
+	  break;
+
+
+	case 28:
+	  play(0x65);
+	  state = 29;
+	  buzzer_count = 50;
+	  goto start;
+	  break;
+
+	case 29:
+	  play(0xF5);
+	  state = 30;
+	  buzzer_count = 50;
+	  goto start;
+	  break;
+
+	case 30:
+	  play(0xE5);
+	  state = 135;
+	  break;
+
+	case 135:
+	  state = 31;
+	  buzzer_count = 50;
+	  goto start;
+	  break;
+
+	case 31:
+	  play(0xC5);
+	  state = 32;
+	  buzzer_count = 50;
+	  goto start;
+	  break;
+
+	case 32:
+	  play(0xE5);
+	  state = 33;
+	  break;
+
+	case 33:
+	  play(0xD5);
+	  state = 34;
+	  buzzer_count = 50;
+	  goto start;
+	  break;
+
+	case 34:
+	  play(0xC5);
+	  state = 35;
+	  buzzer_count = 50;
+	  goto start;
+	  break;
+
+	case 35:
+	  play(0xB4);
+	  state = 36;
+	  break;
+
+	case 36:
+	  play(0);
+	  state = 37;
+	  buzzer_count = 95;
+	  goto start;
+	  break;
+
+        case 37:
+	  play(0xB4);
+	  state = 38;
+	  buzzer_count = 50;
+	  goto start;
+	  break;
+
+	case 38:
+	  play(0xC5);
+	  state = 39;
+	  buzzer_count = 50;
+	  goto start;
+	  break;
+
+	case 39:
+	  play(0xD5);
+	  state = 40;
+	  break;
+
+	case 40:
+	  play(0xE5);
+	  state = 41;
+	  break;
+	  
+       	case 41:
+	  play(0xC5);
+	  state = 42;
+	  break;
+
+	case 42:
+	  play(0xA4);
+	  state = 43;
+	  break;
+
+ 	case 43:
+	  play(0);
+	  state = 44;
+	  buzzer_count = 95;
+	  goto start;
+	  break;
+
+	case 44:
+	  play(0xA4);
+	  state = 45;
+	  break;
+
+ 	case 45:
+	  play(0);
+	  state = 46;
+	  break;
+
+	case 46:
+	  play(0xE4);
+	  state = 47;
+	  break;
+
+	case 47:
+	  state = 48;
+	  break;
+
+ 	case 48:
+	  play(0xC4);
+	  state = 133;
+	  break;
+
+        case 133:
+	  state = 49;
+	  break;
+	  
+	case 49:
+	  play(0xD4);
+	  state = 50;
+	  break;
+
+ 	case 50:
+	  state = 51;
+	  break;
+
+	case 51:
+	  play(0xB3);
+	  state = 52;
+	  break;
+
+	case 52:
+	  state = 53;
+	  break;
+
+	case 53:
+	  play(0xC4);
+	  state = 54;
+	  break;
+
+ 	case 54:
+	  state = 55;
+	  break;
+
+	case 55:
+	  play(0xA3);
+	  state = 56;
+	  break;	 
+
+	case 56:
+	  state = 57;
+	  break;
+
+ 	case 57:
+	  play(0x631);
+	  state = 58;
+	  break;
+
+ 	case 58:
+	  state = 59;
+	  break;
+
+	case 59:
+	  play(0xB3);
+	  state = 60;
+	  break;
+
+	case 60:
+	  state = 61;
+	  break;
+
+ 	case 61:
+	  play(0xE4);
+	  state = 62;
+	  break;
+
+ 	case 62:
+	  state = 63;
+	  break;
+
+	case 63:
+	  play(0xC4);
+	  state = 64;
+	  break;
+
+	case 64:
+	  state = 65;
+	  break;
+
+	case 65:
+	  play(0xD4);
+	  state = 66;
+	  break;
+
+ 	case 66:
+	  state = 67;
+	  break;
+
+	case 67:
+	  play(0xB3);
+	  state = 68;
+	  break;	  
+
+	case 68:
+	  state = 69;
+	  break;
+
+	case 69:
+	  play(0xC4);
+	  state = 70;
+	  break;
+
+ 	case 70:
+	  play(0xE4);
+	  state = 71;
+	  break;
+
+	case 71:
+	  play(0xA4);
+	  state = 72;
+	  break;
+
+	case 72:
+	  play(0);
+	  state = 73;
+	  buzzer_count = 95;
+	  goto start;
+	  break;
+
+ 	case 73:
+	  play(0xA4);
+	  state = 74;
+	  break;
+
+	case 74:
+	  play(0x641);
+	  state = 75;
+	  break;
+
+ 	case 75:
+	  state = 76;
+	  break;
+
+	case 76:
+	  state = 77;
+	  break;
+
+	case 77:
+	  state = 0;
+	  break;
+	}
+	  
 	buzzer_count = 0; 
       }
       
