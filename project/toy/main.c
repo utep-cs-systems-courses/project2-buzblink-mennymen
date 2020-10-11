@@ -14,6 +14,174 @@ int main() {
       static int riff = 0;
       static int riff2 = 0;
     start:
+      if (++buzzer_count == 80) {
+	switch (state){
+	case 0:
+	  play(0x65);
+	  state = 1;
+	  break;
+	  
+	case 1:
+	  play(0x64);
+	  state = 2;
+	  break;
+
+	case 2:
+	  play(0xC5);
+	  state = 3;
+	  break;
+
+	case 3:
+	  play(0xE5);
+	  state = 4;
+	  break;
+
+	case 4:
+	  play(0xD51);
+	  state = 5;
+	  break;
+
+	case 5:
+	  play(0x64);
+	  state = 6;
+	  break;
+
+	case 6:
+	  play(0xB5);
+	  state = 7;
+	  break;
+	
+	case 7:
+	  play(0xB4);
+	  state = 8;
+	  break;
+	
+        case 8:
+	  play(0xA5);
+	  state = 9;
+	  break;
+
+	case 9:
+	  play(0xC5);
+	  state = 10;
+	  break;
+
+	case 10:
+	  play(0xE5);
+	  state = 11;
+	  break;
+	  
+	case 11:
+	  play(0xA5);
+	  state = 12;
+	  break;
+
+	case 12:
+	  play(0x65);
+	  state = 13;
+	  break;
+
+	case 13:
+	  play(0xC5);
+	  state = 14;
+	  break;
+
+	case 14:
+	  play(0xD5);
+	  state = 15;
+	  break;
+
+	case 15:
+	  play(0xE5);
+	  state = 16;
+	  break;
+
+	case 16:
+	  play(0xA5);
+	  state = 17;
+	  break;
+
+        case 17:
+	  play(0xC5);
+	  state = 18;
+	  break;
+
+	case 18:
+	  play(0xF5);
+	  state = 19;
+	  break;
+
+	case 19:
+	  play(0xA5);
+	  state = 20;
+	  break;
+
+	case 20:
+	  play(0x651);
+	  state = 21;
+	  break;
+
+	case 21:
+	  play(0xC5);
+	  state = 23;
+	  break;
+	  
+	case 23:
+	  play(0xD5);
+	  state = 24;
+	  break;
+
+	case 24:
+	  play(0xF5);
+	  state = 25;
+	  break;
+	  
+	case 25:
+	  play(0xE5);
+	  state = 26;
+	  break;
+
+	case 26:
+	  play(0x64);
+	  state = 27;
+	  break;
+
+	case 27:
+	  play(0xC5);
+	  state = 28;
+	  break;
+
+
+	case 28:
+	  play(0xE5);
+	  state = 29;
+	  break;
+
+	case 29:
+	  play(0xD5);
+	  state = 30;
+	  break;
+
+	case 30:
+	  play(0xA4);
+	  state = 31;
+	  break;
+
+	case 31:
+	  play(0xB4);
+	  state = 32;
+	  break;
+
+	case 32:
+	  play(0xD5);
+	  state = 0;
+	  break;
+	}
+	  
+	buzzer_count = 0; 
+      }
+
+      /*
       if (++buzzer_count == 100) {
 	switch (state){
 	case 0:
@@ -480,7 +648,7 @@ int main() {
 	  
 	buzzer_count = 0; 
       }
-      
+      */      
       /*  Californication Intro
       if (++buzzer_count == 99) {
 	switch (state){
