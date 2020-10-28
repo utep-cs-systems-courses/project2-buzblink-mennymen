@@ -1,6 +1,6 @@
 #ifndef play_included
 #define play_included
 
-void play(int note);
+void play(unsigned char note);
 
 #endif
