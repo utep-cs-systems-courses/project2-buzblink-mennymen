@@ -30,17 +30,5 @@ switch_interrupt_handler()
 {
   char p2val = switch_update_interrupt_sense();
   switch_state_down = !switch_state_down;
-
-  //*************************switch_state_down = (p1val & SW1) ? 0 : 1; /* 0 when SW1 is up */  //RICARDO NO TENIA LA LINEA DE ARRIBA Y ESTA LA TIENE SIN COMENTARIO, CALALA DESPUES
-
-  //switch_state_changed = (switch_state_changed+1)%2;
-  
-  //if(p2val & S1 == 0)
-    //switch_state_changed = 0;
-    switch_state_changed = !switch_state_changed;
-    /*
-  else if(p2val & S2 == 0)
-    switch_state_changed = 1;
-    */
-  //led_update();
+  switch_state_changed = !switch_state_changed;
 }

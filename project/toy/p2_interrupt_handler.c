@@ -3,6 +3,7 @@
 #include "stateMachines.h"
 
 char button_pressed;
+
 /* Switches on P2 (S2) */
 void
 __interrupt_vec(PORT2_VECTOR) Port_2(){
