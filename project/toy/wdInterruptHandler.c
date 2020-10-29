@@ -76,11 +76,13 @@ __interrupt_vec(WDT_VECTOR) WDT(){/* 250 interrupts/sec */
       } else{
 	blink_state = (blink_state+1)%8;
 	count = 0;
-	extern char switch_state_down;
-	if(switch_state_down)
+	extern char button_pressed;
+	if(button_pressed == 1)
 	  tetris_advance();
-	else
+	else if (button_pressed == 0)
 	  zelda_advance();
+	else
+	  play(0);
       }
        
 }
