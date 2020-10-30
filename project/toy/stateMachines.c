@@ -349,17 +349,19 @@ void buzzer_advance()
 void tetris_advance()
 {
   extern unsigned char count;
+  extern float max_count;
   static unsigned char state = 0;
   if(tetris_notes[state] != 1){
     play(tetris_notes[state]);
   }
-  count = tetris_duration[state];
+  count = (max_count/100) * tetris_duration[state];
   state = (state+1)%81;
 }
 
 void zelda_advance()
 {
   extern unsigned char count;
+  extern float max_count;
   static unsigned char state = 0;
   play(zelda_notes[state]);
   state = (state+1)%32;

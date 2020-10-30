@@ -6,13 +6,13 @@
 #include "stateMachines.h"
 #include "switches.h"
 
-int count = 0;
-
+char count = 0;
+float max_count = 100;
+extern char button_pressed;
 void
 __interrupt_vec(WDT_VECTOR) WDT(){/* 250 interrupts/sec */
   static unsigned char state = 0;
   static char blink_state = 0;
-  
   /*
       if ((++count%25) == 0) buzzer_advance();
 
@@ -29,7 +29,7 @@ __interrupt_vec(WDT_VECTOR) WDT(){/* 250 interrupts/sec */
 
 
       
-      if (++count != 100){
+      if (++count != max_count && button_pressed != 4){
 	switch(blink_state){
 	case 0:
 	  red_on = 1;
@@ -76,13 +76,11 @@ __interrupt_vec(WDT_VECTOR) WDT(){/* 250 interrupts/sec */
       } else{
 	blink_state = (blink_state+1)%8;
 	count = 0;
-	extern char button_pressed;
 	if(button_pressed == 1)
 	  tetris_advance();
 	else if (button_pressed == 0)
 	  zelda_advance();
 	else
 	  play(0);
-      }
-       
+      }       
 }
