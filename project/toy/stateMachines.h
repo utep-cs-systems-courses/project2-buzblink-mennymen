@@ -26,4 +26,6 @@ void green75();
 void green50();
 
 void green25();
+
+void leds_advance();
 #endif // included

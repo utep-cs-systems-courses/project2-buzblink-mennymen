@@ -10,8 +10,7 @@ void
 __interrupt_vec(PORT2_VECTOR) Port_2(){
   if (P2IFG & S1) {	      /* did a button cause this interrupt? */
     P2IFG &= ~S1;		      /* clear pending sw interrupts */
-    button_pressed = (button_pressed + 1)%2;
-    //switch_interrupt_handler();	/* single handler for all switches */
+    button_pressed = (button_pressed + 1)%3;
   }
 
   else if(P2IFG & S2) {
@@ -39,6 +38,4 @@ __interrupt_vec(PORT2_VECTOR) Port_2(){
     led_changed = 1;
     led_update();
   }
-
-  
 }

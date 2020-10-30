@@ -30,24 +30,17 @@ static unsigned char zelda_notes[32] = {0x65,0x64,0xC5,0xE5,0xDC,0x64,0xB5,0xB4,
 					0x6C,0xC5,0xD5,0xF5,0xE5,0x64,0xC5,0xE5,0xD5,0xA4,
 					0xB4,0xD5};
 
+static unsigned char megaman_notes[38] = {0xC5,0,0xC5,0,0xC5,0xAB,0xC5,1,1,0xD5,
+					  0,0xD5,0,0xD5,0xC5,0xD5,1,1,0xDB,0,
+				  	  0xDB,0,0xDB,0,0xFB,0,0xFB,0,0xFB,0,
+					  0x65,0xF5,0xDB,0xF5,0xFB,0x65,1,1};
+
+static unsigned char megaman_duration[38] = {25,95,50,95,25,50,50,0,0,25,
+					     95,50,95,25,50,50,0,0,25,95,
+					     50,95,25,0,25,95,50,95,25,0,
+					     50,50,25,25,25,25,1,1};
 
 
-char toggle_red()/* always toggle! */
-{
-  static char state = 0;
-
-  switch (state) {
-  case 0:
-    red_on = 1;
-    state = 1;
-    break;
-  case 1:
-    red_on = 0;
-    state = 0;
-    break;
-  }
-  return 1;/* always changes an led */
-}
 
 void red75()
 {
@@ -95,16 +88,6 @@ void red50()
     break;
 
   case 1:
-    red_on = 1;
-    state = 2;
-    break;
-
-  case 2:
-    red_on = 0;
-    state = 3;
-    break;
-
-  case 3:
     red_on = 0;
     state = 0;
     changed = 1;
@@ -192,16 +175,6 @@ void green50()
     break;
 
   case 1:
-    green_on = 1;
-    state = 2;
-    break;
-
-  case 2:
-    green_on = 0;
-    state = 3;
-    break;
-
-  case 3:
     green_on = 0;
     state = 0;
     changed = 1;
@@ -243,59 +216,53 @@ void green25()
   led_update();
 }
 
-char toggle_green2()/* always toggle! */
-{
-  static char state = 0;
-
-  switch (state) {
-  case 0:
-    green_on = 1;
-    state = 1;
-    break;
-  case 1:
-    green_on = 0;
-    state = 0;
-    break;
-  }
-  return 1;/* always changes an led */
-}
-
-
 void leds_advance()
 {
-  static char state = 0;
-  switch(state){
+  extern char blink_state;
+  switch(blink_state){
   case 0:
-    toggle_red();
-    toggle_green2();
+    red_on = 1;
+    green_on = 0;
     break;
+    
   case 1:
+    red75();
     green25();
     break;
+    
   case 2:
+    red50();
+    green50();
+    break;
+    
+  case 3:
+    red25();
+    green75();
+    break;
+    
+  case 4:
+    red_on = 0;
+    green_on = 1;
+    break;
+    
+  case 5:
+    red25();
+    green75();
+    break;
+    
+  case 6:
+    red50();
+    green50();
+    break;
+
+  case 7:
     red75();
+    green25();
     break;
   }
   led_changed = 1;
-  state = (state+1)%3;
-}
-
-
-void state_advance()/* alternate between toggling red & green */
-{
-  char changed = 0;
-
-  static enum {R=0, G=1} color = G;
-  switch (color) {
-  case R: changed = toggle_red(); color = G; break;
-  case G: changed = toggle_green2(); color = R; break;
-  }
-
-  led_changed = changed;
   led_update();
 }
-
-
 
 void alarm_advance()
 {
@@ -346,6 +313,8 @@ void buzzer_advance()
   buzzer_set_period(cycles);   
 }
 
+
+
 void tetris_advance()
 {
   extern unsigned char count;
@@ -367,3 +336,14 @@ void zelda_advance()
   state = (state+1)%32;
 }
 
+void megaman_advance()
+{
+  extern unsigned char count;
+  extern float max_count;
+  static unsigned char state = 0;
+  if(megaman_notes[state] != 1){
+    play(megaman_notes[state]);
+  }
+  count = (max_count/100) * megaman_duration[state];
+  state = (state+1)%38;
+}
