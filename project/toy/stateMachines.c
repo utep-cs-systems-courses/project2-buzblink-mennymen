@@ -42,13 +42,13 @@ static unsigned char megaman_duration[38] = {25,95,50,95,25,50,50,0,0,25,
 
 
 
-void red75()
+void red75() /* Red led shines at 75% intensity */
 {
   char changed = 0;
   static char state = 0;
   switch(state){
     
-  case 0:
+  case 0: /* The led is on for 3 out of the 4 states */
     red_on = 1;
     state = 1;
     changed = 1;
@@ -75,13 +75,13 @@ void red75()
 }
 
 
-void red50()
+void red50() /* Red led shines at 50% intensity */
 {
   char changed = 0;
   static char state = 0;
   switch(state){
     
-  case 0:
+  case 0: /* The led is on for 1 out of the 2 states */
     red_on = 1;
     state = 1;
     changed = 1;
@@ -97,12 +97,12 @@ void red50()
   led_update();
 }
 
-void red25()
+void red25() /* Red led shines at 25% intensity */
 {
   char changed = 0;
   static char state = 0;
   switch(state){
-  case 0:
+  case 0: /* The led is on for 1 out of the 4 states */
     red_on = 0;
     state = 1;
     changed = 1;
@@ -129,13 +129,13 @@ void red25()
 }
 
 
-void green75()
+void green75() /* Green led shines at 75% intensity */
 {
   char changed = 0;
   static char state = 0;
   switch(state){
     
-  case 0:
+  case 0: /* The led is on for 3 out of the 4 states */
     green_on = 1;
     state = 1;
     changed = 1;
@@ -162,13 +162,13 @@ void green75()
 }
 
 
-void green50()
+void green50() /* Green led shines at 50% intensity */
 {
   char changed = 0;
   static char state = 0;
   switch(state){
     
-  case 0:
+  case 0: /* The led is on for 1 out of the 2 states */
     green_on = 1;
     state = 1;
     changed = 1;
@@ -185,12 +185,13 @@ void green50()
 }
 
 
-void green25()
+void green25() /* Green led shines at 25% intensity */
 {
   char changed = 0;
   static char state = 0;
   switch(state){
-  case 0:
+    
+  case 0: /* The led is on for 1 out of the 4 states */
     green_on = 0;
     state = 1;
     changed = 1;
@@ -216,46 +217,46 @@ void green25()
   led_update();
 }
 
-void leds_advance()
+void leds_advance() /* I feel I was a bit lazy with the leds state machine. Basically, it starts with the red led at full bright, and the green one off. Then the red one gradually shines less each time, while the green one does the opposite until the green one is fully bright and the red one off. Then they do the opposite until it returns to the original state */
 {
   extern char blink_state;
   switch(blink_state){
-  case 0:
+  case 0: /* Red at 100% and green off */
     red_on = 1;
     green_on = 0;
     break;
     
-  case 1:
+  case 1: /* Red at 75% and green at 25% */
     red75();
     green25();
     break;
     
   case 2:
-    red50();
+    red50(); /* Red at 50% and green at 50% */
     green50();
     break;
     
-  case 3:
+  case 3: /* Red at 25% and green at 75% */
     red25();
     green75();
     break;
     
-  case 4:
+  case 4: /* Red off and green at 100% */
     red_on = 0;
     green_on = 1;
     break;
     
-  case 5:
+  case 5: /* Red at 25% and green at 75% */
     red25();
     green75();
     break;
     
-  case 6:
+  case 6: /* Red at 50% and green at 50% */
     red50();
     green50();
     break;
 
-  case 7:
+  case 7: /* Red at 75% and green at 25% */
     red75();
     green25();
     break;
@@ -264,7 +265,7 @@ void leds_advance()
   led_update();
 }
 
-void alarm_advance()
+void alarm_advance() /* From the alarm we did in class */
 {
   static short state = 0;
   
@@ -285,7 +286,7 @@ void alarm_advance()
   }
 }
 
-void up_state()
+void up_state() /* From the alarm we did in class */
 {
   sb = 1;
   red_on = 0;
@@ -294,7 +295,7 @@ void up_state()
   led_update();
 }
 
-void down_state()
+void down_state() /* From the alarm we did in class */
 {
   sb = 0;
   red_on = 1;
@@ -303,7 +304,7 @@ void down_state()
   led_update();
 }
 
-void buzzer_advance()
+void buzzer_advance() /* From the alarm we did in class */
 {
   if(sb)
     x += 225;
@@ -320,14 +321,14 @@ void tetris_advance()
   extern unsigned char count;
   extern float max_count;
   static unsigned char state = 0;
-  if(tetris_notes[state] != 1){
+  if(tetris_notes[state] != 1){ /* 1 is used to make the same note play for longer */
     play(tetris_notes[state]);
   }
-  count = (max_count/100) * tetris_duration[state];
+  count = (max_count/100) * tetris_duration[state]; /* The values for duration are the percentage of what count should be, this is used to make half or quarter notes */
   state = (state+1)%81;
 }
 
-void zelda_advance()
+void zelda_advance() /* This song does not have a duration array as all notes have the same duration */
 {
   extern unsigned char count;
   extern float max_count;

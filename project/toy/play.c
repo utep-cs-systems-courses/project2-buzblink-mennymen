@@ -4,8 +4,8 @@
 #include "buzzer.h"
 #include <string.h>
 
-
-void play(unsigned char note)
+/* I added this file with the function play to make it easier to play certain notes, but since I had to change the format of the notes, it is not as efficient as it was originally. Still, it helped efficiently to make songs.*/
+void play(unsigned char note) 
 {
   if(note == 0xC3)
      buzzer_set_period(15289.00);
@@ -115,7 +115,7 @@ void play(unsigned char note)
   else if(note == 0xB5)
     buzzer_set_period(2024.76);
    
-  else 
+  else  /*If it receives something that is not valid, the buzzer will just go silent */
     buzzer_set_period(0);
 }
 
