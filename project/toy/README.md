@@ -1,7 +1,7 @@
 Project 2: Toy
 ==============
 
-#Project Description
+# Project Description
 
 This project consists of a toy using the msp430. It was inspired by the
 Christmas lights that have a button to play songs and cycles through
