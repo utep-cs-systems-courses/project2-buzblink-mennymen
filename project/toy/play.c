@@ -114,7 +114,7 @@ void play(unsigned char note)
 
   else if(note == 0xB5)
     buzzer_set_period(2024.76);
-   
+
   else  /*If it receives something that is not valid, the buzzer will just go silent */
     buzzer_set_period(0);
 }

@@ -3,14 +3,13 @@
 #include "led.h"
 
 char switch_state_down, switch_state_changed; /* effectively boolean */
+char button_pressed = 4; /* This variable is set to 4 so there are no leds or sounds when we first load the msp430 */
 
 static char 
 switch_update_interrupt_sense()
 {
   char p2val = P2IN;
-  /* update switch interrupt to detect changes from current buttons */
   P2IES |= (p2val & SWITCHESG);	/* if switch up, sense down */
-  //P1IES &= (p1val | ~SWITCHES);	/* if switch down, sense up */
   return p2val;
 }
 

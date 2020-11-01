@@ -330,8 +330,6 @@ void tetris_advance()
 
 void zelda_advance() /* This song does not have a duration array as all notes have the same duration */
 {
-  extern unsigned char count;
-  extern float max_count;
   static unsigned char state = 0;
   play(zelda_notes[state]);
   state = (state+1)%32;
@@ -342,7 +340,7 @@ void megaman_advance()
   extern unsigned char count;
   extern float max_count;
   static unsigned char state = 0;
-  if(megaman_notes[state] != 1){
+  if (megaman_notes[state] != 1) {
     play(megaman_notes[state]);
   }
   count = (max_count/100) * megaman_duration[state];

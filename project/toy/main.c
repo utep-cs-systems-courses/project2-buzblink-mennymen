@@ -5,7 +5,6 @@
 #include "stateMachines.h"
 #include "led.h"
 
-
 int main() {
     configureClocks();
     enableWDTInterrupts();
